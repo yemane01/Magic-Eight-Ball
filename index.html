@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="author" content="Yemane Teame">
 <title>Magic Eight Ball</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css"> <script type="text/javascript">
+<link href="../css/style.css" rel="stylesheet" type="text/css"> 
 
-<h1>Magic Eight Ball</h1>
+
 <style>
 
 * {
@@ -79,7 +79,8 @@ body {
   </div>
   <input type="text" id="question" placeholder="Ask a yes or no question">
   <button id="shake-btn" onclick="
-  var responses = [
+  <script>
+    var responses = [
     'Yes, definitely.',
     'It is possible.',
     'No doubt.',
@@ -100,6 +101,6 @@ body {
   }
 ">Shake the Magic Eight Ball</button>
   <div id="answer"></div>
-
+</script>
 </body>
 </html>
