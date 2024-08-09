@@ -1,106 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="author" content="Yemane Teame">
-<title>Magic Eight Ball</title>
-<link href="../css/style.css" rel="stylesheet" type="text/css"> 
+    <meta charset="UTF-8">
+    <meta name="author" content="Yemane Teame">
+    <title>Magic Eight Ball</title>
+    <link href="../css/style.css" rel="stylesheet" type="text/css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: lightgreen;
+        }
 
-<style>
+        #eight-ball {
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            border-radius: 50%;
+            position: relative;
+            margin-bottom: 20px;
+        }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+        #eight-ball::before {
+            content: '8';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 40px;
+        }
 
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f4;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color:lightgreen;
-}
+        #question {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 30px;
+            width: 60%;
+            font-size: 18px;
+            background-color: beige;
+            color: black;
+        }
 
+        #shake-btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
 
-#eight-ball {
-  width: 200px;
-  height: 200px;
-  background-color: black;
-  border-radius: 50%;
-  position: relative;
-  margin-bottom: 20px;
-}
-
-#eight-ball::before {
-  content: '8';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 40px;
-}
-
-#question {
-  border: 1px solid #ccc;
-  padding: 10px;
-  margin-top: 30px;
-  width: 60%;
-  font-size: 18px;
-  background-color:beige;
-  color: black;
-}
-
-#shake-btn {
-  padding: 10px 20px;
-  font-size: 18px;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-#answer {
-  display: block;
-  margin-top: 20px;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  width: 60%;
-}
-  
-</style>
+        #answer {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            width: 60%;
+        }
+    </style>
 </head>
 <body>
-  <h1>Magic Eight Ball</h1>
-  <div id="eight-ball">
-  </div>
-  <input type="text" id="question" placeholder="Ask a yes or no question">
-  <button id="shake-btn" onclick="
-  <script>
+<h1>Magic Eight Ball</h1>
+<div id="eight-ball"></div>
+<input type="text" id="question" placeholder="Ask a yes or no question">
+<button id="shake-btn" onclick="shakeMagicEightBall()">Shake the Magic Eight Ball</button>
+<div id="answer"></div>
+
+<script>
     var responses = [
-    'Yes, definitely.',
-    'It is possible.',
-    'No doubt.',
-    'Most likely.',
-    'Of course.',
-    'Could happen.',
-    'No way.',
-    'Never know.'
-  ];
-  var question = document.getElementById('question');
-  var answer = document.getElementById('answer');
-  if (question.value === '') {
-    alert('Please ask a question.');
-  } else {
-    var randomIndex = Math.floor(Math.random() * responses.length);
-    answer.innerHTML = 'Magic Eight Ball says: ' + responses[randomIndex];
-    question.innerHTML = '';
-  }
-">Shake the Magic Eight Ball</button>
-  <div id="answer"></div>
+        'Yes, definitely.',
+        'It is possible.',
+        'No doubt.',
+        'Most likely.',
+        'Of course.',
+        'Could happen.',
+        'No way.',
+        'Never know.'
+    ];
+
+    function shakeMagicEightBall() {
+        var question = document.getElementById('question');
+        var answer = document.getElementById('answer');
+        if (question.value === '') {
+            alert('Please ask a question.');
+        } else {
+            var randomIndex = Math.floor(Math.random() * responses.length);
+            answer.innerHTML = 'Magic Eight Ball says: ' + responses[randomIndex];
+            question.value = '';  // Fix: Clear the input field
+        }
+    }
 </script>
 </body>
 </html>
